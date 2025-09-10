@@ -114,12 +114,9 @@ public class JdbcInviteDao implements InviteDao{
 
     @Override
     public List<Invite> getInvitesByCookout(int cookoutId) {
-        String sql = """
-        SELECT i.invite_id, i.cookout_id, i.attendee_id, u.username AS attendee_username
-        FROM invite i
-        JOIN users u ON i.attendee_id = u.user_id
-        WHERE i.cookout_id = ?
-    """;
+        String sql = "SELECT i.invite_id, i.cookout_id, i.attendee_id, u.username AS attendee_username FROM invite i " +
+        "JOIN users u ON i.attendee_id = u.user_id " +
+        "WHERE i.cookout_id = ?";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, cookoutId);
         List<Invite> invites = new ArrayList<>();

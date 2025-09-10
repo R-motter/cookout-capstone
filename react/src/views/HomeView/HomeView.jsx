@@ -197,7 +197,7 @@ function CookoutList() {
   };
 
   useEffect(() => {
-    if (!userId) return;
+    if (!userId) {"/login"};
   
     const fetchCookouts = async () => {
       try {
